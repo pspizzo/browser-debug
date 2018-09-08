@@ -2,7 +2,7 @@
 Client-side JavaScript utility for debug statements. Automatically turns on debugging if the query string in the browser has a "debug" parameter set to a number 1 or higher.  Higher values for "debug" can increase verbosity (1 = log, 2 = debug, 3 = trace).
 
 ## Installation
-    npm install --save browser-debug
+    npm install --save 'pspizzo/browser-debug'
 
 ## Usage
     const Debug = require('browser-debug');
