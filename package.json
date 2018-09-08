@@ -1,0 +1,36 @@
+{
+  "name": "browser-debug",
+  "version": "1.0.0",
+  "description": "Client-side utility for debug statements",
+  "main": "index.js",
+  "scripts": {
+    "test": "nyc mocha --reporter spec --recursive"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pspizzo/browser-debug.git"
+  },
+  "keywords": [
+    "JavaScript",
+    "browser",
+    "debug"
+  ],
+  "author": "Patrick Spizzo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pspizzo/browser-debug/issues"
+  },
+  "homepage": "https://github.com/pspizzo/browser-debug#readme",
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "istanbul": "^0.4.5",
+    "jsdom": "^12.0.0",
+    "jsdom-global": "^3.0.2",
+    "mocha": "^5.2.0",
+    "nyc": "^13.0.1",
+    "sinon": "^6.2.0"
+  },
+  "dependencies": {
+    "query-string": "^6.1.0"
+  }
+}
