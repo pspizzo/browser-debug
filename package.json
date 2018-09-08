@@ -33,7 +33,5 @@
     "nyc": "^13.0.1",
     "sinon": "^6.2.0"
   },
-  "dependencies": {
-    "query-string": "^6.1.0"
-  }
+  "dependencies": {}
 }
