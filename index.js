@@ -1,1 +1,1 @@
-module.exports = require('./src/Debug');
+module.exports = require('./dist/Debug');

@@ -67,14 +67,26 @@ describe('Debug', function () {
         expect(fakeConsole.callCount, 'trace: console.log not called').to.equal(3);
     });
 
-    it('should not enable any logging without a "debug" query parameter', function () {
+    it('should not enable any logging without any query parameter', function () {
         this.jsdom = require('jsdom-global')('', { url: 'https://example.com/' });
+        const Debug = require('../src/Debug');
+        expect(Debug.level).to.equal(0);
+    });
+
+    it('should not enable any logging without a "debug" query parameter', function () {
+        this.jsdom = require('jsdom-global')('', { url: 'https://example.com/?a=b&c=d' });
         const Debug = require('../src/Debug');
         expect(Debug.level).to.equal(0);
     });
 
     it('should not enable any logging with an invalid "debug" query parameter', function () {
         this.jsdom = require('jsdom-global')('', { url: 'https://example.com/?debug=a' });
+        const Debug = require('../src/Debug');
+        expect(Debug.level).to.equal(0);
+    });
+
+    it('should not enable any logging with an empty "debug" query parameter', function () {
+        this.jsdom = require('jsdom-global')('', { url: 'https://example.com/?debug=' });
         const Debug = require('../src/Debug');
         expect(Debug.level).to.equal(0);
     });
@@ -87,6 +99,12 @@ describe('Debug', function () {
 
     it('should enable "log" if debug query parameter is 1', function () {
         this.jsdom = require('jsdom-global')('', { url: 'https://example.com/?debug=1' });
+        const Debug = require('../src/Debug');
+        expect(Debug.level).to.equal(1);
+    });
+
+    it('should enable "log" if debug query parameter is 1 and part of other query string', function () {
+        this.jsdom = require('jsdom-global')('', { url: 'https://example.com/?a=0&debug=1&x=y' });
         const Debug = require('../src/Debug');
         expect(Debug.level).to.equal(1);
     });

@@ -1,11 +1,15 @@
 'use strict';
 
-const queryString = require('query-string');
 let debug = 0;
 
 if (typeof window !== 'undefined') {
-    const parsedQueryString = queryString.parse(window.location && window.location.search ? window.location.search : '');
-    debug = parseInt(parsedQueryString.debug || 0);
+    const queryString = window.location && window.location.search ? window.location.search : '';
+    if (queryString) {
+        const debugEntry = queryString.replace(/^\?/, '&').split('&').find(e => e.match(/^debug=/));
+        if (debugEntry) {
+            debug = parseInt(debugEntry.split('=', 2)[1] || 0);
+        }
+    }
 }
 
 const Debug = {
