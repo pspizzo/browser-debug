@@ -2,7 +2,7 @@
   "name": "browser-debug",
   "version": "1.0.0",
   "description": "Client-side utility for debug statements",
-  "main": "index.js",
+  "main": "dist/Debug.js",
   "scripts": {
     "test": "nyc mocha --reporter spec --recursive",
     "build": "babel ./src -d ./dist"
