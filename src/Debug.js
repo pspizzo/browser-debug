@@ -2,6 +2,9 @@
 
 let debug = 0;
 
+function logger(...msg) { console.log(...msg); };
+function noop(...msg) {};
+
 if (typeof window !== 'undefined') {
     const queryString = window.location && window.location.search ? window.location.search : '';
     if (queryString) {
@@ -13,30 +16,18 @@ if (typeof window !== 'undefined') {
 }
 
 const Debug = {
-    log: function(...msg) { },
-    debug: function(...msg) { },
-    trace: function(...msg) { },
+    log: noop,
+    debug: noop,
+    trace: noop,
 };
 
 // Allow manually setting the debug level
 Debug.setLevel = function(level) {
     this.level = parseInt(level || 0);
     // To improve performance, only define functions if the debug level is high enough
-    if (this.level >= 1)  {
-        this.log = function(...msg) { console.log(...msg); };
-    } else {
-        this.log = function(...msg) { };
-    }
-    if (this.level >= 2)  {
-        this.debug = function(...msg) { console.log(...msg); };
-    } else {
-        this.debug = function(...msg) { };
-    }
-    if (this.level >= 3)  {
-        this.trace = function(...msg) { console.log(...msg); };
-    } else {
-        this.trace = function(...msg) { };
-    }
+    Debug.log = this.level >=1 ? logger : noop;
+    Debug.debug = this.level >=2 ? logger : noop;
+    Debug.trace = this.level >=3 ? logger : noop;
 }.bind(Debug);
 
 // Initialize the log level
