@@ -24,10 +24,10 @@ const Debug = {
 // Allow manually setting the debug level
 Debug.setLevel = function(level) {
     this.level = parseInt(level || 0);
-    // To improve performance, only define functions if the debug level is high enough
-    Debug.log = this.level >=1 ? logger : noop;
-    Debug.debug = this.level >=2 ? logger : noop;
-    Debug.trace = this.level >=3 ? logger : noop;
+
+    Debug.log = this.level >= 1 ? logger : noop;
+    Debug.debug = this.level >= 2 ? logger : noop;
+    Debug.trace = this.level >= 3 ? logger : noop;
 }.bind(Debug);
 
 // Initialize the log level
